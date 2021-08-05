@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Form from './components/Form';
+import Users from './components/Users';
+import PageNotFound  from './components/PageNotFound';
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import { Container, makeStyles } from '@material-ui/core';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const spacing = makeStyles({
+  root: {
+    display: "grid",
+    placeItems: "center",
+    height: "100vh"
+  }
+})
+interface IEmail {
+  email: string;
+}
+interface IPassword {
+  password: string
 }
 
-export default App;
+export default function App():JSX.Element {
+
+  const classContainer = spacing()
+
+  return <Router>
+    <Switch>
+      <Route exact path="/" render={_ => <Container maxWidth="sm" className={classContainer.root}>
+          <Form/>
+        </Container>}
+      />
+      <Route path="/users" component={Users}/>
+      <Route component={PageNotFound} />
+    </Switch>
+  </Router>
+}
