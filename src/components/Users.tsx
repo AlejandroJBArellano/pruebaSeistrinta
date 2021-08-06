@@ -32,9 +32,12 @@ function Users():JSX.Element {
         <Grid container>
             { 
                 users.map((user: IUser, i: number) => {
-
+                const u = {
+                    u: user
+                }
+                console.log(users)
                 return <Grid key={`${i}`}>
-                    <User user={user}/>
+                    <User {... u}/>
                 </Grid>
                 })
             }

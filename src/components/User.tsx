@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, CardHeader, Card, CardMedia, CardContent } from "@material-ui/core"
+import { Grid, CardHeader, Card, CardMedia, CardContent, makeStyles } from "@material-ui/core"
 
 interface IUser {
     id?: number;
@@ -8,6 +8,16 @@ interface IUser {
     first_name: string;
     avatar: string;
 }
+const classCard = makeStyles({
+    root: {
+        width: "200px",
+        padding: "10px",
+        margin: "10px",
+        borderRadius: "10px",
+        backgroundColor: "#ff6",
+        textAlign: "center"
+    }
+})
 class User extends Component<IUser, any> {
     render():JSX.Element {
         const user:IUser = this.props;

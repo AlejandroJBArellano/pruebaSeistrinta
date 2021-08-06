@@ -10,6 +10,18 @@ const classF = makeStyles({
 
 export default function Form ():JSX.Element {
     const classForm = classF()
+    const hola = async (data) => {
+        const headers = new Headers();
+        headers.append("Content Type", "aplication/json")
+        const options = {
+            method: "POST",
+            headers,
+            body: JSON.stringify(data)
+        } 
+        const request = await fetch("https://reqres.in/api/register")
+        const response = await fetch(request)
+        const status = await response.status;
+    }
     return <Grid container>
         <Grid item xs={6}>
             <Paper className={classForm.root} elevation={10}>
